@@ -3,7 +3,7 @@ import { DotLoader } from "react-spinners";
 
 const Loader = () => {
   return (
-    <div className="h-[100vh] max-w-[420px] w-[100%] flex justify-center items-center">
+    <div className="h-[100vh] max-w-[430px] w-[100%] flex justify-center items-center">
       {/* <RingLoader color="black" /> */}
       <DotLoader color="#2B6EF6" />
     </div>

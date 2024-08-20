@@ -84,7 +84,7 @@ const Home = () => {
     const starCountRef3 = query(
       ref(db, "User/"),
       orderByChild("address"),
-      equalTo("Atlanta, GA")
+      equalTo("Atlanta")
     );
 
     onValue(starCountRef3, async (snapshot) => {
@@ -1028,7 +1028,7 @@ const Home = () => {
                   )}
 
                   {userdata?.profileDesign?.backgroundTheme === "Custom" && (
-                    <div className="absolute w-[100%] border ">
+                    <div className="absolute w-[100%]  ">
                       <Full
                         coverurl={coverurl}
                         logourl={logourl}

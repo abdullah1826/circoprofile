@@ -113,7 +113,7 @@ const Pro = ({
           <div
             className="w-[100%] h-[100px]  absolute bottom-[18px] rounded-t-[35px]"
             style={{
-              backgroundColor: bg,
+              backgroundColor: bg || "#ffffff",
               // boxShadow:
               //   "rgba(60, 64, 67, 0.3) 0px -1px 2px 0px, rgba(60, 64, 67, 0.15) 0px -2px 6px 2px",
               //   background: `linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, ${bg} 100%)`,
