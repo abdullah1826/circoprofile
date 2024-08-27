@@ -66,6 +66,7 @@ const SocialLinks = ({
             elm={elm}
             checkHttp={checkHttp}
             linkAnalytics={linkAnalytics}
+            whiteTextAndBorder={whiteTextAndBorder}
             // returnIcons={returnIcons}
             // webBtnStyle={webBtnStyle[7]}
           />
