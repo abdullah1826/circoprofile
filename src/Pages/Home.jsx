@@ -12,7 +12,7 @@ import {
   update,
 } from "firebase/database";
 import { getDownloadURL, ref as storagref } from "firebase/storage";
-import { returnIcons, returnSocialUrl } from "../assets/ReturnSocialIcons";
+import { returnIcons } from "../assets/ReturnSocialIcons";
 import Loader from "../assets/components/Loader";
 import VCard from "vcard-creator";
 import NotFound from "./NotFound";
@@ -26,8 +26,6 @@ import Portrait from "../Themes/Portrait";
 import "../App.css";
 import Pro from "../Themes/Pro";
 import ClassicPro from "../Themes/ClassicPro";
-import { Helmet } from "react-helmet";
-import MetaTags from "react-meta-tags";
 
 const Home = () => {
   let { userid } = useParams();
@@ -80,18 +78,18 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    const starCountRef3 = query(
-      ref(db, "User/"),
-      orderByChild("address"),
-      equalTo("Atlanta")
-    );
+  // useEffect(() => {
+  //   const starCountRef3 = query(
+  //     ref(db, "User/"),
+  //     orderByChild("name"),
+  //     equalTo("David Lee")
+  //   );
 
-    onValue(starCountRef3, async (snapshot) => {
-      const data = await snapshot.val();
-      console.log("user TARGET", data);
-    });
-  }, []);
+  //   onValue(starCountRef3, async (snapshot) => {
+  //     const data = await snapshot.val();
+  //     console.log("user TARGET", data);
+  //   });
+  // }, []);
 
   useEffect(() => {
     const starCountRef2 = ref(db, `Analytic/`);
@@ -665,31 +663,8 @@ const Home = () => {
       return str?.slice(0, numVal) + "...";
     }
   };
-  // console.log(userdata);
 
-  let handleLinkAliginmentIssue = () => {
-    let theLinks = sociallink?.filter((elm) => {
-      return elm?.shareable === true || elm?.isFeatureOn === false;
-    });
-
-    if (theLinks?.length % 3 === 0) {
-      return theLinks;
-    } else {
-      theLinks?.push({ linkID: null });
-      // theLinks?.push({ linkID: null });
-      return theLinks;
-    }
-  };
   let scrnWidth = window.innerWidth;
-  console.log(sociallink);
-
-  let isClassic = false;
-  let isColor = false;
-  let isFull = true;
-
-  // let saveBtnStyle = ["s1", "s2", "s3", "s4"];
-  // let webBtnStyle = ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s7"];
-  console.log(userdata?.profileDesign?.backgroundTheme);
 
   let removeHash = (code) => {
     if (code?.includes("#")) {
@@ -708,7 +683,6 @@ const Home = () => {
           {notfound || userdata?.profileOn === 0 ? (
             <NotFound />
           ) : userdata?.directMode === false ? (
-            // <div className="h-max w-max relative">
             <div
               className={`h-[100vh] max-w-[435px] w-[100%] flex flex-col items-center  shadow-lg  relative ${
                 userdata?.profileDesign?.profileFont === "1"
@@ -729,11 +703,6 @@ const Home = () => {
                 userdata?.profileDesign?.backgroundTheme === "Full"
                   ? {}
                   : {
-                      // fontFamily: "Inter, sans-serif",
-
-                      // background: `linear-gradient(to bottom, ${hexToRGBA(
-                      //   userdata?.cardColor
-                      // )},${hexToRGBA(userdata?.backgroudColor)}, white)`,
                       backgroundColor: `${userdata?.profileDesign?.backgroundColor}`,
                     }
               }
@@ -758,18 +727,7 @@ const Home = () => {
                   }}
                 />
               ) : null}
-              {/* <div
-                style={{
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  height: "100%",
-                  width: "100%",
-                }}
-              > */}
-              {/* <ToastContainer position="top-center" autoClose={2000} /> */}
-              {/* {leadShouldOpen === "false" && ( */}
+
               <LeadformModal
                 modal={modal}
                 handleModal={handleModal}

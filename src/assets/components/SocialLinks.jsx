@@ -70,7 +70,7 @@ const SocialLinks = ({
             // returnIcons={returnIcons}
             // webBtnStyle={webBtnStyle[7]}
           />
-        ) : elm?.linkID === 16 || elm?.linkID === 25 ? (
+        ) : elm?.linkID === 25 ? (
           <VideoContainer
             link={checkHttp(elm?.value)}
             shareable={elm?.shareable}
@@ -117,12 +117,13 @@ const SocialLinks = ({
               here, Thank you */}
             </p>
           </div>
-        ) : elm?.linkID === 22 ? (
-          <SpotifyContainer
-            link={checkHttp(elm?.value, elm?.linkID)}
-            shareable={elm?.shareable}
-          />
-        ) : elm?.linkID === 23 ? (
+        ) : //  : elm?.linkID === 22 ? (
+        //   <SpotifyContainer
+        //     link={checkHttp(elm?.value, elm?.linkID)}
+        //     shareable={elm?.shareable}
+        //   />
+        // )
+        elm?.linkID === 23 ? (
           <SoundCloudContainer
             link={checkHttp(elm?.value)}
             shareable={elm?.shareable}

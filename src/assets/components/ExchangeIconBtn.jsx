@@ -60,8 +60,8 @@ const ExchangeIconBtn = ({
                   saveBtnStyle === "style1" ||
                   saveBtnStyle === "style3" ||
                   saveBtnStyle === "style5"
-                    ? "15px"
-                    : "30px",
+                    ? "6px"
+                    : "100px",
                 color: saveContactTextColor,
               }
             : {
@@ -78,8 +78,8 @@ const ExchangeIconBtn = ({
                   saveBtnStyle === "style1" ||
                   saveBtnStyle === "style3" ||
                   saveBtnStyle === "style5"
-                    ? "15px"
-                    : "30px",
+                    ? "6px"
+                    : "100px",
 
                 color: saveContactTextColor,
               }

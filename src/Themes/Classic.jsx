@@ -9,6 +9,7 @@ import MenumenuModal from "../assets/components/MenuModal";
 import btmLogo from "../imgs/btmLogo.png";
 import { LuRepeat } from "react-icons/lu";
 import ExchangeIconBtn from "../assets/components/ExchangeIconBtn";
+import bgPlchldr from "../imgs/bgPlchldr.png";
 const Classic = ({
   coverurl,
   logourl,
@@ -71,15 +72,15 @@ const Classic = ({
         <HiDotsHorizontal className="text-[black] text-2xl" />
       </div>
       <div className="min-h-[355px] w-[100%] flex items-center flex-col relative">
-        {coverurl ? (
-          <img
-            src={coverurl}
-            className="h-[210px] w-[90%] mt-[15px] rounded-2xl "
-            loading="lazy"
-          />
-        ) : (
-          <div className="h-[210px] w-[90%] mt-[15px] rounded-2xl "></div>
-        )}
+        {/* {coverurl ? ( */}
+        <img
+          src={coverurl || bgPlchldr}
+          className="h-[210px] w-[90%] mt-[15px] rounded-2xl "
+          loading="lazy"
+        />
+        {/* // ) : (
+        //   <div className="h-[210px] w-[90%] mt-[15px] rounded-2xl "></div>
+        // )} */}
 
         <div className="h-[160px] w-[100%] absolute top-[140px] flex justify-center">
           <div className="h-[100%] w-[160px] relative">

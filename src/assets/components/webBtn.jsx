@@ -142,7 +142,7 @@ const WebBtn = ({
           </div>
         )}
         <p
-          class="font-[400] text-[17px] text-center  w-[100%]   absolute "
+          class="font-[400] text-[17px] text-center  w-[100%]  absolute"
           style={{ color: weblinkButtonTextColor }}
         >
           {/* {elm?.title} */}

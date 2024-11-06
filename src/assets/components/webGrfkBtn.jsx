@@ -27,7 +27,7 @@ const WebGrfkBtn = ({ elm, checkHttp, linkAnalytics, whiteTextAndBorder }) => {
         target="_blank"
         href={elm?.linkID != null && checkHttp(elm?.url, elm?.linkID, elm?.url)}
         className={`h-[186px] w-[100%]  rounded-[20px] relative ${
-          elm?.graphicDisplayType === "style1" && "shadow-div"
+          elm?.graphicDisplayType === "style1" && "shadow-div overflow-hidden"
         }`}
         style={{
           display:
@@ -57,7 +57,7 @@ const WebGrfkBtn = ({ elm, checkHttp, linkAnalytics, whiteTextAndBorder }) => {
         </div>
 
         <p
-          class="font-[400] text-[17px]  mt-[6px] text-center  w-[100%] absolute bottom-3 z-40"
+          class="font-[600] text-[17px]  mt-[6px] text-center  w-[100%] absolute bottom-3 z-40"
           style={{
             color:
               elm?.graphicDisplayType === "style1"
@@ -65,7 +65,7 @@ const WebGrfkBtn = ({ elm, checkHttp, linkAnalytics, whiteTextAndBorder }) => {
                 : !whiteTextAndBorder
                 ? "black"
                 : "white",
-            bottom: elm?.graphicDisplayType === "style2" ? "-35px" : "12px",
+            bottom: elm?.graphicDisplayType === "style2" ? "-35px" : "2px",
           }}
         >
           {/* {elm?.graphicDisplayText} */}
