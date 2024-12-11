@@ -30,11 +30,11 @@ const ExchangeIconBtn = ({
 
   let hideSaveContactFalse =
     scrnWidth >= 420
-      ? { right: "13%" }
+      ? { right: "10%" }
       : scrnWidth >= 380
-      ? { right: "8%" }
+      ? { right: "6%" }
       : scrnWidth <= 380
-      ? { right: "5%" }
+      ? { right: "4%" }
       : null;
   let hideSaveContactTrue = null;
   return (

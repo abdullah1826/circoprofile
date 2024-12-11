@@ -2,12 +2,13 @@ import React from "react";
 import WebBtn from "./webBtn";
 import WebGrfkBtn from "./webGrfkBtn";
 import FeaturedSocial from "./FeaturedSocial";
-import { returnIcons, returnReactIcons } from "../ReturnSocialIcons";
+import { returnIcons } from "../ReturnSocialIcons";
 import VideoContainer from "./VideoContainer";
 import web from "../socialLink/web.png";
 import { returnPngIcons } from "../ReturnSocialIconsPng";
 import SpotifyContainer from "./SpotifyContainer";
 import SoundCloudContainer from "./SoundCloudComponent";
+import { returnWhiteIcons } from "../ReturnWhiteIcons";
 
 const SocialLinks = ({
   sociallink,
@@ -55,7 +56,7 @@ const SocialLinks = ({
             elm={elm}
             checkHttp={checkHttp}
             linkAnalytics={linkAnalytics}
-            returnIcons={returnReactIcons(elm?.linkID, appIconColor, 45)}
+            returnIcons={returnWhiteIcons(elm?.linkID, appIconColor, 45)}
             webBtnStyle={webBtnStyle}
             weblinkButtonTextColor={weblinkButtonTextColor}
             weblinkButtonBackgroundColor={weblinkButtonBackgroundColor}
@@ -89,9 +90,9 @@ const SocialLinks = ({
             i={i}
             sociallink={sociallink}
           />
-        ) : elm?.linkID === 26 ? (
+        ) : elm?.linkID === 26 || elm?.linkID === 51 ? (
           <div
-            className="w-[100%]  flex flex-col mt-[20px] "
+            className="w-[100%]  flex flex-col mt-[20px]"
             style={{
               display: elm?.shareable === false ? "none" : null,
               textAlign: elm?.textAlign,
@@ -176,8 +177,8 @@ const SocialLinks = ({
                   alt="img"
                   class={
                     elm?.linkID === 999
-                      ? ` ${"h-[100%] w-[100%] rounded-2xl"}`
-                      : ` ${"h-[75px] w-[75px] rounded-2xl  flex justify-center items-center"}`
+                      ? ` ${"h-[100%] w-[100%] rounded-2xl "}`
+                      : ` ${"h-[75px] w-[75px] rounded-2xl  flex justify-center items-center "}`
                   }
                   // style={elm?.name==='Calendly'? {borderRadius:'10px'}:null}
                 />
@@ -187,7 +188,7 @@ const SocialLinks = ({
                   style={{
                     backgroundColor:
                       elm?.linkID === 999 ||
-                      !returnReactIcons(elm?.linkID, appIconColor)
+                      !returnWhiteIcons(elm?.linkID, appIconColor)
                         ? "transparent"
                         : appIconColor,
                   }}
@@ -207,12 +208,12 @@ const SocialLinks = ({
                           elm?.linkID === 999 ||
                           !returnIcons(elm?.linkID) ||
                           !appIconColor
-                            ? ` ${"h-[100%] w-[100%] rounded-xl object-cover"}`
-                            : ` ${"h-[60px] w-[60px] mix-blend-multiply"}`
+                            ? ` ${"h-[100%] w-[100%] rounded-xl object-cover "}`
+                            : ` ${"h-[60px] w-[60px] mix-blend-multiply "}`
                         }
                       />
                     ) : (
-                      returnReactIcons(elm?.linkID, appIconColor, 45)
+                      returnWhiteIcons(elm?.linkID, appIconColor, 45)
                     ))}
                 </div>
               )}

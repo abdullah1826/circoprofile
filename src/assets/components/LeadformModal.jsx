@@ -17,6 +17,7 @@ const LeadformModal = ({
   crntUsrAnalytics,
   handleConfirmModal,
   setModal,
+  isExchangedModeOn,
 }) => {
   let screenWidth = screen.width;
   const style2 = {
@@ -87,6 +88,7 @@ const LeadformModal = ({
     ];
     return monthNames[date.getMonth()];
   }
+  console.log(isExchangedModeOn);
 
   // Function to add leading zero to single-digit day
   function addLeadingZero(number) {
@@ -113,11 +115,13 @@ const LeadformModal = ({
       update(ref(db, `Contacts/${pushKey}`), {
         id: pushKey,
       }).then(() => {
+        const exchangeInfo = crntUsrAnalytics?.totalExcanged || 0;
         update(ref(db, `/Analytic/${crntUsrAnalytics?.id}`), {
           crntMonthLeads: crntUsrAnalytics?.crntMonthLeads + 1,
           crntWeekLeads: crntUsrAnalytics?.crntWeekLeads + 1,
           totalLeads: crntUsrAnalytics?.totalLeads + 1,
           todayLeads: crntUsrAnalytics?.todayLeads + 1,
+          totalExcanged: isExchangedModeOn ? exchangeInfo + 1 : exchangeInfo,
         }).then(() => {
           setModal(true);
           setIsMessage(true);
@@ -139,9 +143,7 @@ const LeadformModal = ({
 
   let [isMessage, setIsMessage] = useState(false);
 
-  // useEffect(() => {
-  //   window.scrollTo(0, document.body.scrollHeight);
-  // }, [modal === true]);
+
 
   return (
     <div>
@@ -390,3 +392,104 @@ const LeadformModal = ({
 };
 
 export default LeadformModal;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,23 +23,27 @@ const Classic = ({
   checkHttp,
   linkAnalytics,
   scrnWidth,
-  saveBtnStyle,
-  webBtnStyle,
-  weblinkButtonTextColor,
-  weblinkButtonBackgroundColor,
-  saveContactBackgroundColor,
-  saveContactTextColor,
-  highlightBoxStyle,
-  isClassic,
-  appIconColor,
-  boxTextColor,
-  boxBackgroundColor,
   removeHash,
-  hideCompanyLogo,
-  hideSaveContact,
-  whiteTextAndBorder,
   isV1,
+  profileDesign,
 }) => {
+  const {
+    saveContactStyle,
+    weblinkStyle,
+    weblinkButtonTextColor,
+    weblinkButtonBackgroundColor,
+    saveContactBackgroundColor,
+    saveContactTextColor,
+    highlightBoxStyle,
+    isClassic,
+    appIconColor,
+    boxTextColor,
+    boxBackgroundColor,
+    hideCompanyLogo,
+    hideSaveContact,
+    whiteTextAndBorder,
+    backgroundColor,
+  } = profileDesign;
   let hideSaveContactFalse =
     scrnWidth >= 420
       ? { right: "13%" }
@@ -55,14 +59,17 @@ const Classic = ({
     setMenuModal(!menuModal);
   };
   return (
-    <div className="w-[100%] relative  h-[100vh] opacity-[100%] overflow-y-scroll scrollbar-hide ">
+    <div
+      className="w-[100%] relative  h-[100vh] opacity-[100%] overflow-y-scroll scrollbar-hide "
+      style={{ backgroundColor: backgroundColor }}
+    >
       <MenumenuModal
         menuModal={menuModal}
         handleMenuModal={handleMenuModal}
         userdata={userdata}
       />
       <div
-        className="h-[38px] w-[38px] rounded-full fixed top-6 right-[50%] cursor-pointer flex justify-center items-center z-10 sm:mr-[-190px] mr-[-43%]"
+        className="h-[38px] w-[38px] rounded-full fixed top-3 right-[49%] cursor-pointer flex justify-center items-center z-10 sm:mr-[-190px] mr-[-46.5%]"
         style={{
           background:
             "linear-gradient(90deg, rgba(255, 255, 255, 0.495) 0%, rgba(255, 255, 255, 0.2178) 100%)",
@@ -71,11 +78,11 @@ const Classic = ({
       >
         <HiDotsHorizontal className="text-[black] text-2xl" />
       </div>
-      <div className="min-h-[355px] w-[100%] flex items-center flex-col relative">
+      <div className="min-h-[355px] w-[100%] flex items-center flex-col relative ">
         {/* {coverurl ? ( */}
         <img
           src={coverurl || bgPlchldr}
-          className="h-[210px] w-[90%] mt-[15px] rounded-2xl "
+          className="h-[210px] w-[100%]  "
           loading="lazy"
         />
         {/* // ) : (
@@ -87,7 +94,7 @@ const Classic = ({
             {!hideCompanyLogo && logourl && (
               <img
                 src={logourl}
-                alt="logo"
+                alt=""
                 className="absolute bottom-[15px] right-[-7px] h-[55px] w-[55px] rounded-full border-[1px] border-white"
                 loading="lazy"
               />
@@ -95,7 +102,7 @@ const Classic = ({
             {profileurl ? (
               <img
                 src={profileurl}
-                alt="profile"
+                alt=""
                 className="h-[150px] w-[150px] rounded-full border-[3px] border-white"
                 loading="lazy"
               />
@@ -105,7 +112,7 @@ const Classic = ({
           </div>
         </div>
 
-        <div className="w-[100%] flex justify-center mt-[72px] ">
+        <div className="w-[100%] flex justify-center mt-[87px] ">
           <h2
             className={`text-[28px]  ${
               userdata?.profileDesign?.profileFont === "1"
@@ -138,15 +145,19 @@ const Classic = ({
             className="text-[16px] font-[300]  text-center w-[90%]"
             style={{ color: whiteTextAndBorder ? "white" : "black" }}
           >
-            {returnSlicedString(userdata?.jobTitle, 51)}
+            {returnSlicedString(userdata?.jobTitle, 51)?.includes(undefined)
+              ? ""
+              : returnSlicedString(userdata?.jobTitle, 51)}
           </h2>
         </div>
-        <div className="w-[100%] flex justify-center  ">
+        <div className="w-[100%] flex justify-center">
           <h2
             className="text-[16px] font-[300]  text-center w-[90%]"
             style={{ color: whiteTextAndBorder ? "white" : "black" }}
           >
-            {returnSlicedString(userdata?.company, 51)}
+            {returnSlicedString(userdata?.company, 51)?.includes(undefined)
+              ? ""
+              : returnSlicedString(userdata?.company, 51)}
           </h2>
         </div>
 
@@ -155,7 +166,7 @@ const Classic = ({
             className=" text-[15px] font-[300] text-[#4D4444] text-center w-[90%]"
             style={{ color: whiteTextAndBorder ? "white" : "black" }}
           >
-            {userdata?.address}
+            {userdata?.address || ""}
           </h2>
         </div>
 
@@ -164,7 +175,7 @@ const Classic = ({
             className="text-[16px] font-[300] text-[#2e363c] w-[90%]"
             style={{ color: whiteTextAndBorder ? "white" : "black" }}
           >
-            {userdata?.bio}
+            {userdata?.bio || ""}
           </p>
         </div>
         <div
@@ -175,14 +186,14 @@ const Classic = ({
             <>
               <SaveBtn
                 downloadVcf={downloadVcf}
-                saveBtnStyle={saveBtnStyle}
+                saveBtnStyle={saveContactStyle}
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 font={userdata?.profileDesign?.profileFont}
               />
               <ExchangeIconBtn
                 handleModal={handleModal}
-                saveBtnStyle={saveBtnStyle}
+                saveBtnStyle={saveContactStyle}
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 hideSaveContact={hideSaveContact}
@@ -215,7 +226,7 @@ const Classic = ({
               sociallink={sociallink}
               checkHttp={checkHttp}
               linkAnalytics={linkAnalytics}
-              webBtnStyle={webBtnStyle}
+              webBtnStyle={weblinkStyle}
               weblinkButtonTextColor={weblinkButtonTextColor}
               weblinkButtonBackgroundColor={weblinkButtonBackgroundColor}
               highlightBoxStyle={highlightBoxStyle}

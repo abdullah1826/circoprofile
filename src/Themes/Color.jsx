@@ -22,22 +22,28 @@ const Color = ({
   checkHttp,
   linkAnalytics,
   scrnWidth,
-  saveBtnStyle,
-  webBtnStyle,
-  weblinkButtonTextColor,
-  weblinkButtonBackgroundColor,
-  saveContactBackgroundColor,
-  saveContactTextColor,
-  highlightBoxStyle,
-  appIconColor,
-  boxTextColor,
-  boxBackgroundColor,
-  whiteTextAndBorder,
   removeHash,
-  hideCompanyLogo,
-  hideSaveContact,
+  profileDesign,
 }) => {
   // console.log(weblinkButtonBackgroundColor);
+
+  const {
+    saveContactStyle,
+    weblinkStyle,
+    weblinkButtonTextColor,
+    weblinkButtonBackgroundColor,
+    saveContactBackgroundColor,
+    saveContactTextColor,
+    highlightBoxStyle,
+    appIconColor,
+    boxTextColor,
+    boxBackgroundColor,
+    hideCompanyLogo,
+    hideSaveContact,
+    whiteTextAndBorder,
+    backgroundColor,
+  } = profileDesign;
+
   let hideSaveContactFalse =
     scrnWidth >= 420
       ? { right: "13%" }
@@ -54,7 +60,10 @@ const Color = ({
   };
 
   return (
-    <div className="w-[100%] h-[100vh] opacity-[100%] overflow-y-scroll scrollbar-hide ">
+    <div
+      className="w-[100%] h-[100vh] opacity-[100%] overflow-y-scroll scrollbar-hide"
+      style={{ backgroundColor: backgroundColor }}
+    >
       <div className="min-h-[355px] w-[100%] flex items-center flex-col">
         <MenumenuModal
           menuModal={menuModal}
@@ -166,14 +175,14 @@ const Color = ({
             <>
               <SaveBtn
                 downloadVcf={downloadVcf}
-                saveBtnStyle={saveBtnStyle}
+                saveBtnStyle={saveContactStyle}
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 font={userdata?.profileDesign?.profileFont}
               />
               <ExchangeIconBtn
                 handleModal={handleModal}
-                saveBtnStyle={saveBtnStyle}
+                saveBtnStyle={saveContactStyle}
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 hideSaveContact={hideSaveContact}
@@ -204,7 +213,7 @@ const Color = ({
             sociallink={sociallink}
             checkHttp={checkHttp}
             linkAnalytics={linkAnalytics}
-            webBtnStyle={webBtnStyle}
+            webBtnStyle={weblinkStyle}
             weblinkButtonTextColor={weblinkButtonTextColor}
             weblinkButtonBackgroundColor={weblinkButtonBackgroundColor}
             appIconColor={appIconColor}

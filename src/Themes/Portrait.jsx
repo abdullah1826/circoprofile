@@ -21,22 +21,25 @@ const Portrait = ({
   checkHttp,
   linkAnalytics,
   scrnWidth,
-  saveBtnStyle,
-  webBtnStyle,
-  weblinkButtonTextColor,
-  weblinkButtonBackgroundColor,
-  saveContactBackgroundColor,
-  saveContactTextColor,
-  bg,
-  highlightBoxStyle,
-  appIconColor,
-  boxTextColor,
-  boxBackgroundColor,
-  removeHash,
-  hideCompanyLogo,
-  hideSaveContact,
-  whiteTextAndBorder,
+  profileDesign,
 }) => {
+  const {
+    saveContactStyle,
+    weblinkStyle,
+    weblinkButtonTextColor,
+    weblinkButtonBackgroundColor,
+    saveContactBackgroundColor,
+    saveContactTextColor,
+    highlightBoxStyle,
+    appIconColor,
+    boxTextColor,
+    boxBackgroundColor,
+    hideCompanyLogo,
+    hideSaveContact,
+    backgroundColor,
+    whiteTextAndBorder,
+  } = profileDesign;
+
   // console.log(weblinkButtonBackgroundColor);
   let hexToRGBA = (hex) => {
     // Remove the '#' character if present
@@ -68,7 +71,10 @@ const Portrait = ({
     setMenuModal(!menuModal);
   };
   return (
-    <div className="w-[100%]   max-h-[100vh] opacity-[100%] overflow-y-scroll scrollbar-hide">
+    <div
+      className="w-[100%]   max-h-[100vh] opacity-[100%] overflow-y-scroll scrollbar-hide"
+      style={{ backgroundColor }}
+    >
       <div className="min-h-[355px] w-[100%] flex items-center flex-col">
         <MenumenuModal
           menuModal={menuModal}
@@ -89,10 +95,10 @@ const Portrait = ({
           <div
             className="w-[100%] h-[150px] absolute bottom-[-15px]"
             style={{
-              background: `linear-gradient(to top, ${bg ? bg : "#ffffff"},${
-                bg ? bg : "#ffffff"
-              }, transparent)`,
-              //   background: `linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, ${bg} 100%)`,
+              background: `linear-gradient(to top, ${
+                backgroundColor ? backgroundColor : "#ffffff"
+              },${backgroundColor ? backgroundColor : "#ffffff"}, transparent)`,
+              //   background: `linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, ${backgroundColor} 100%)`,
             }}
           ></div>
           <div className="h-[60px] w-[60px]  rounded-full absolute bottom-[70px] left-6">
@@ -200,12 +206,12 @@ const Portrait = ({
           className={`w-[100%] flex justify-center items-center relative`}
           style={!hideSaveContact ? { height: "80px" } : null}
         >
-          {/* bg-gradient-to-b from-[${hexToRGBA(userdata?.colorCode)}] to-white */}
+          {/* backgroundColor-gradient-to-b from-[${hexToRGBA(userdata?.colorCode)}] to-white */}
           {!hideSaveContact && (
             <>
               <SaveBtn
                 downloadVcf={downloadVcf}
-                saveBtnStyle={saveBtnStyle}
+                saveBtnStyle={saveContactStyle}
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 font={userdata?.profileDesign?.profileFont}
@@ -213,7 +219,7 @@ const Portrait = ({
 
               <ExchangeIconBtn
                 handleModal={handleModal}
-                saveBtnStyle={saveBtnStyle}
+                saveBtnStyle={saveContactStyle}
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 hideSaveContact={hideSaveContact}
@@ -245,7 +251,7 @@ const Portrait = ({
             sociallink={sociallink}
             checkHttp={checkHttp}
             linkAnalytics={linkAnalytics}
-            webBtnStyle={webBtnStyle}
+            webBtnStyle={weblinkStyle}
             weblinkButtonTextColor={weblinkButtonTextColor}
             weblinkButtonBackgroundColor={weblinkButtonBackgroundColor}
             appIconColor={appIconColor}

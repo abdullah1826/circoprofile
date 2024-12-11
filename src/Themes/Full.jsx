@@ -22,21 +22,24 @@ const Full = ({
   checkHttp,
   linkAnalytics,
   scrnWidth,
-  saveBtnStyle,
-  webBtnStyle,
-  weblinkButtonTextColor,
-  weblinkButtonBackgroundColor,
-  saveContactBackgroundColor,
-  saveContactTextColor,
-  highlightBoxStyle,
-  appIconColor,
-  boxBackgroundColor,
-  boxTextColor,
-  removeHash,
-  hideCompanyLogo,
-  hideSaveContact,
-  whiteTextAndBorder,
+
+  profileDesign,
 }) => {
+  const {
+    saveContactStyle,
+    weblinkStyle,
+    weblinkButtonTextColor,
+    weblinkButtonBackgroundColor,
+    saveContactBackgroundColor,
+    saveContactTextColor,
+    highlightBoxStyle,
+    appIconColor,
+    boxTextColor,
+    boxBackgroundColor,
+    hideCompanyLogo,
+    hideSaveContact,
+    whiteTextAndBorder,
+  } = profileDesign;
   let hideSaveContactFalse =
     scrnWidth >= 420
       ? { right: "13%" }
@@ -169,7 +172,7 @@ const Full = ({
             <>
               <SaveBtn
                 downloadVcf={downloadVcf}
-                saveBtnStyle={saveBtnStyle}
+                saveBtnStyle={saveContactStyle}
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 font={userdata?.profileDesign?.profileFont}
@@ -193,7 +196,7 @@ const Full = ({
               </div> */}
               <ExchangeIconBtn
                 handleModal={handleModal}
-                saveBtnStyle={saveBtnStyle}
+                saveBtnStyle={saveContactStyle}
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 hideSaveContact={hideSaveContact}
@@ -213,7 +216,7 @@ const Full = ({
             sociallink={sociallink}
             checkHttp={checkHttp}
             linkAnalytics={linkAnalytics}
-            webBtnStyle={webBtnStyle}
+            webBtnStyle={weblinkStyle}
             weblinkButtonTextColor={weblinkButtonTextColor}
             weblinkButtonBackgroundColor={weblinkButtonBackgroundColor}
             appIconColor={appIconColor}

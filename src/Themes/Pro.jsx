@@ -4,7 +4,7 @@ import imgPlchldr from "../imgs/imgPlchldr.png";
 import logoPlchldr from "../imgs/logoPlchldr.png";
 import cvrPlchldr from "../imgs/cvrPlchldr.png";
 import FeaturedSocial from "../assets/components/FeaturedSocial";
-import WebGrfkBtn from "../assets/components/webGrfkBtn";
+// import WebackgroundColorrfkBtn from "../assets/components/webackgroundColorrfkBtn";
 import WebBtn from "../assets/components/webBtn";
 import SaveBtn from "../assets/components/SaveBtn";
 import SocialLinks from "../assets/components/SocialLinks";
@@ -30,22 +30,24 @@ const Pro = ({
   checkHttp,
   linkAnalytics,
   scrnWidth,
-  saveBtnStyle,
-  webBtnStyle,
-  weblinkButtonTextColor,
-  weblinkButtonBackgroundColor,
-  saveContactBackgroundColor,
-  saveContactTextColor,
-  bg,
-  highlightBoxStyle,
-  appIconColor,
-  boxTextColor,
-  boxBackgroundColor,
-  removeHash,
-  hideCompanyLogo,
-  hideSaveContact,
-  whiteTextAndBorder,
+  profileDesign,
 }) => {
+  const {
+    saveContactStyle,
+    weblinkStyle,
+    weblinkButtonTextColor,
+    weblinkButtonBackgroundColor,
+    saveContactBackgroundColor,
+    saveContactTextColor,
+    highlightBoxStyle,
+    appIconColor,
+    boxTextColor,
+    boxBackgroundColor,
+    hideCompanyLogo,
+    hideSaveContact,
+    backgroundColor,
+    whiteTextAndBorder,
+  } = profileDesign;
   // console.log(weblinkButtonBackgroundColor);
   let hexToRGBA = (hex) => {
     // Remove the '#' character if present
@@ -93,7 +95,10 @@ const Pro = ({
 
 `}
       </style>
-      <div className="min-h-[355px] w-[100%] flex items-center flex-col">
+      <div
+        className="min-h-[355px] w-[100%] flex items-center flex-col"
+        style={{ backgroundColor }}
+      >
         <MenumenuModal
           menuModal={menuModal}
           handleMenuModal={handleMenuModal}
@@ -113,10 +118,10 @@ const Pro = ({
           <div
             className="w-[100%] h-[100px]  absolute bottom-[18px] rounded-t-[35px]"
             style={{
-              backgroundColor: bg || "#ffffff",
+              backgroundColor: backgroundColor || "#ffffff",
               // boxShadow:
               //   "rgba(60, 64, 67, 0.3) 0px -1px 2px 0px, rgba(60, 64, 67, 0.15) 0px -2px 6px 2px",
-              //   background: `linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, ${bg} 100%)`,
+              //   background: `linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, ${backgroundColor} 100%)`,
               boxShadow: "rgba(0, 0, 0, 0.5) 0px -11px 10px -8px",
             }}
           ></div>
@@ -249,12 +254,12 @@ const Pro = ({
               style={!hideSaveContact ? { height: "80px" } : null}
             >
               <div className="w-[95%] flex justify-between items-center">
-                {/* bg-gradient-to-b from-[${hexToRGBA(userdata?.colorCode)}] to-white */}
+                {/* backgroundColor-gradient-to-b from-[${hexToRGBA(userdata?.colorCode)}] to-white */}
 
                 <>
                   <SaveBtn
                     downloadVcf={downloadVcf}
-                    saveBtnStyle={saveBtnStyle}
+                    saveBtnStyle={saveContactStyle}
                     saveContactBackgroundColor={saveContactBackgroundColor}
                     saveContactTextColor={saveContactTextColor}
                     font={userdata?.profileDesign?.profileFont}
@@ -262,7 +267,7 @@ const Pro = ({
                   />
                   <ExchangeBtn
                     downloadVcf={handleModal}
-                    saveBtnStyle={saveBtnStyle}
+                    saveBtnStyle={saveContactStyle}
                     saveContactBackgroundColor={saveContactBackgroundColor}
                     saveContactTextColor={saveContactTextColor}
                     font={userdata?.profileDesign?.profileFont}
@@ -278,7 +283,7 @@ const Pro = ({
                 sociallink={sociallink}
                 checkHttp={checkHttp}
                 linkAnalytics={linkAnalytics}
-                webBtnStyle={webBtnStyle}
+                webBtnStyle={weblinkStyle}
                 weblinkButtonTextColor={weblinkButtonTextColor}
                 weblinkButtonBackgroundColor={weblinkButtonBackgroundColor}
                 appIconColor={appIconColor}

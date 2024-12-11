@@ -31,7 +31,7 @@ const SaveBtn = ({
 
   return (
     <div
-      className=" flex  items-center"
+      className=" flex  items-center justify-center"
       style={{ width: isProTheme ? "58%" : "250px" }}
     >
       <div

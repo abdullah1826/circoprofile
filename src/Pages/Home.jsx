@@ -26,12 +26,21 @@ import Portrait from "../Themes/Portrait";
 import "../App.css";
 import Pro from "../Themes/Pro";
 import ClassicPro from "../Themes/ClassicPro";
+import {
+  cardSubDesigns,
+  classicSubDesigns,
+  colorSubDesigns,
+  customBackgrounds,
+  customSubDesigns,
+  portraitSubDesigns,
+} from "../assets/ReturnSubdesign";
 
 const Home = () => {
   let { userid } = useParams();
   let [userdata, setuserdata] = useState(null);
   let [sociallink, setsociallink] = useState([]);
   let [loading, setloading] = useState(true);
+  const [exchanged, setExchanged] = useState(false);
 
   // console.log(sociallink);
 
@@ -82,7 +91,7 @@ const Home = () => {
   //   const starCountRef3 = query(
   //     ref(db, "User/"),
   //     orderByChild("name"),
-  //     equalTo("David Lee")
+  //     equalTo("George William")
   //   );
 
   //   onValue(starCountRef3, async (snapshot) => {
@@ -378,7 +387,7 @@ const Home = () => {
           totalClicks: 0,
           totalClickRate: 0,
           totalLeads: 0,
-
+          totalExchanged: 0,
           crntWeekViews: 1,
           pastWeekViews: 0,
 
@@ -649,6 +658,7 @@ const Home = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    setExchanged(true);
     setModal(true);
     window.scrollTo({
       top: document.body.scrollHeight,
@@ -673,7 +683,30 @@ const Home = () => {
       return code;
     }
   };
-  console.log(userdata?.profileDesign?.profileFont);
+  console.log(userdata?.profileDesign?.selectedTheme);
+
+  const returnBgImage = () => {
+    if (userdata?.profileDesign?.selectedTheme === "other") {
+      return userdata?.profileDesign?.backgroundColor;
+    } else {
+      return customBackgrounds[userdata?.profileDesign?.selectedTheme] || null;
+    }
+  };
+
+  const themeSelector = (theme, layout) => {
+    if (theme === "other" || !theme || theme === undefined || theme === null) {
+      return layout;
+    } else {
+      if (theme?.includes("classic")) return "Classic";
+      if (theme?.includes("portrait")) return "Portrait";
+      if (theme?.includes("image")) return "Custom";
+      if (theme?.includes("card")) return "Card";
+      if (theme?.includes("color")) return "Color";
+    }
+  };
+
+  console.log(classicSubDesigns["classic1"], "<----------------here is design");
+
   return (
     <>
       {loading ? (
@@ -735,6 +768,7 @@ const Home = () => {
                 crntUsrAnalytics={crntUsrAnalytics}
                 handleConfirmModal={handleConfirmModal}
                 setModal={setModal}
+                isExchangedModeOn={exchanged}
               />
               {/* )} */}
               <ConfirmModal
@@ -763,84 +797,16 @@ const Home = () => {
                       checkHttp={checkHttp}
                       linkAnalytics={linkAnalytics}
                       scrnWidth={scrnWidth}
-                      saveBtnStyle={userdata?.profileDesign?.saveContactStyle}
-                      webBtnStyle={userdata?.profileDesign?.weblinkStyle}
-                      weblinkButtonTextColor={
-                        userdata?.profileDesign?.weblinkButtonTextColor
-                      }
-                      weblinkButtonBackgroundColor={
-                        userdata?.profileDesign?.weblinkButtonBackgroundColor
-                      }
-                      saveContactBackgroundColor={
-                        userdata?.profileDesign?.saveContactBackgroundColor
-                      }
-                      saveContactTextColor={
-                        userdata?.profileDesign?.saveContactTextColor
-                      }
-                      highlightBoxStyle={
-                        userdata?.profileDesign?.highlightBoxStyle
-                      }
-                      isClassic={true}
-                      appIconColor={userdata?.profileDesign?.appIconColor}
-                      boxTextColor={userdata?.profileDesign?.boxTextColor}
-                      boxBackgroundColor={
-                        userdata?.profileDesign?.boxBackgroundColor
-                      }
                       removeHash={removeHash}
-                      hideCompanyLogo={userdata?.profileDesign?.hideCompanyLogo}
-                      hideSaveContact={userdata?.profileDesign?.hideSaveContact}
-                      whiteTextAndBorder={
-                        userdata?.profileDesign?.whiteTextAndBorder
-                      }
                       isV1={false}
-                    />
-                  )}
-
-                  {userdata?.profileDesign?.backgroundTheme ===
-                    "ClassicPro" && (
-                    <ClassicPro
-                      coverurl={coverurl}
-                      logourl={logourl}
-                      profileurl={profileurl}
-                      userdata={userdata}
-                      returnSlicedString={returnSlicedString}
-                      handleModal={handleModal}
-                      downloadVcf={downloadVcf}
-                      sociallink={sociallink}
-                      returnIcons={returnIcons}
-                      checkHttp={checkHttp}
-                      linkAnalytics={linkAnalytics}
-                      scrnWidth={scrnWidth}
-                      saveBtnStyle={userdata?.profileDesign?.saveContactStyle}
-                      webBtnStyle={userdata?.profileDesign?.weblinkStyle}
-                      weblinkButtonTextColor={
-                        userdata?.profileDesign?.weblinkButtonTextColor
+                      profileDesign={
+                        // userdata?.profileDesign?.selectedTheme === "other"
+                        //   ?
+                        userdata?.profileDesign
+                        // : classicSubDesigns[
+                        //     userdata?.profileDesign?.selectedTheme
+                        //   ]
                       }
-                      weblinkButtonBackgroundColor={
-                        userdata?.profileDesign?.weblinkButtonBackgroundColor
-                      }
-                      saveContactBackgroundColor={
-                        userdata?.profileDesign?.saveContactBackgroundColor
-                      }
-                      saveContactTextColor={
-                        userdata?.profileDesign?.saveContactTextColor
-                      }
-                      highlightBoxStyle={
-                        userdata?.profileDesign?.highlightBoxStyle
-                      }
-                      isClassic={true}
-                      appIconColor={userdata?.profileDesign?.appIconColor}
-                      boxTextColor={userdata?.profileDesign?.boxTextColor}
-                      boxBackgroundColor={
-                        userdata?.profileDesign?.boxBackgroundColor
-                      }
-                      removeHash={removeHash}
-                      hideCompanyLogo={userdata?.profileDesign?.hideCompanyLogo}
-                      hideSaveContact={userdata?.profileDesign?.hideSaveContact}
-                      whiteTextAndBorder={
-                        userdata?.profileDesign?.whiteTextAndBorder
-                      }
-                      isV1={false}
                     />
                   )}
 
@@ -859,35 +825,15 @@ const Home = () => {
                       checkHttp={checkHttp}
                       linkAnalytics={linkAnalytics}
                       scrnWidth={scrnWidth}
-                      saveBtnStyle={userdata?.profileDesign?.saveContactStyle}
-                      webBtnStyle={userdata?.profileDesign?.weblinkStyle}
-                      weblinkButtonTextColor={
-                        userdata?.profileDesign?.weblinkButtonTextColor
-                      }
-                      weblinkButtonBackgroundColor={
-                        userdata?.profileDesign?.weblinkButtonBackgroundColor
-                      }
-                      saveContactBackgroundColor={
-                        userdata?.profileDesign?.saveContactBackgroundColor
-                      }
-                      saveContactTextColor={
-                        userdata?.profileDesign?.saveContactTextColor
-                      }
-                      bg={userdata?.profileDesign?.backgroundColor}
-                      highlightBoxStyle={
-                        userdata?.profileDesign?.highlightBoxStyle
-                      }
-                      appIconColor={userdata?.profileDesign?.appIconColor}
-                      boxTextColor={userdata?.profileDesign?.boxTextColor}
-                      boxBackgroundColor={
-                        userdata?.profileDesign?.boxBackgroundColor
-                      }
-                      whiteTextAndBorder={
-                        userdata?.profileDesign?.whiteTextAndBorder
-                      }
                       removeHash={removeHash}
-                      hideCompanyLogo={userdata?.profileDesign?.hideCompanyLogo}
-                      hideSaveContact={userdata?.profileDesign?.hideSaveContact}
+                      profileDesign={
+                        // userdata?.profileDesign?.selectedTheme === "other"
+                        //   ?
+                        userdata?.profileDesign
+                        // : colorSubDesigns[
+                        //     userdata?.profileDesign?.selectedTheme
+                        //   ]
+                      }
                     />
                   )}
 
@@ -906,35 +852,14 @@ const Home = () => {
                       checkHttp={checkHttp}
                       linkAnalytics={linkAnalytics}
                       scrnWidth={scrnWidth}
-                      saveBtnStyle={userdata?.profileDesign?.saveContactStyle}
-                      webBtnStyle={userdata?.profileDesign?.weblinkStyle}
-                      weblinkButtonTextColor={
-                        userdata?.profileDesign?.weblinkButtonTextColor
+                      profileDesign={
+                        // userdata?.profileDesign?.selectedTheme === "other"
+                        //   ?
+                        userdata?.profileDesign
+                        // : portraitSubDesigns[
+                        //     userdata?.profileDesign?.selectedTheme
+                        //   ]
                       }
-                      weblinkButtonBackgroundColor={
-                        userdata?.profileDesign?.weblinkButtonBackgroundColor
-                      }
-                      saveContactBackgroundColor={
-                        userdata?.profileDesign?.saveContactBackgroundColor
-                      }
-                      saveContactTextColor={
-                        userdata?.profileDesign?.saveContactTextColor
-                      }
-                      bg={userdata?.profileDesign?.backgroundColor}
-                      highlightBoxStyle={
-                        userdata?.profileDesign?.highlightBoxStyle
-                      }
-                      appIconColor={userdata?.profileDesign?.appIconColor}
-                      boxTextColor={userdata?.profileDesign?.boxTextColor}
-                      boxBackgroundColor={
-                        userdata?.profileDesign?.boxBackgroundColor
-                      }
-                      whiteTextAndBorder={
-                        userdata?.profileDesign?.whiteTextAndBorder
-                      }
-                      removeHash={removeHash}
-                      hideCompanyLogo={userdata?.profileDesign?.hideCompanyLogo}
-                      hideSaveContact={userdata?.profileDesign?.hideSaveContact}
                     />
                   )}
 
@@ -953,40 +878,19 @@ const Home = () => {
                       checkHttp={checkHttp}
                       linkAnalytics={linkAnalytics}
                       scrnWidth={scrnWidth}
-                      saveBtnStyle={userdata?.profileDesign?.saveContactStyle}
-                      webBtnStyle={userdata?.profileDesign?.weblinkStyle}
-                      weblinkButtonTextColor={
-                        userdata?.profileDesign?.weblinkButtonTextColor
+                      profileDesign={
+                        // userdata?.profileDesign?.selectedTheme === "other"
+                        //   ?
+                        userdata?.profileDesign
+                        // : cardSubDesigns[
+                        //     userdata?.profileDesign?.selectedTheme
+                        //   ]
                       }
-                      weblinkButtonBackgroundColor={
-                        userdata?.profileDesign?.weblinkButtonBackgroundColor
-                      }
-                      saveContactBackgroundColor={
-                        userdata?.profileDesign?.saveContactBackgroundColor
-                      }
-                      saveContactTextColor={
-                        userdata?.profileDesign?.saveContactTextColor
-                      }
-                      bg={userdata?.profileDesign?.backgroundColor}
-                      highlightBoxStyle={
-                        userdata?.profileDesign?.highlightBoxStyle
-                      }
-                      appIconColor={userdata?.profileDesign?.appIconColor}
-                      boxTextColor={userdata?.profileDesign?.boxTextColor}
-                      boxBackgroundColor={
-                        userdata?.profileDesign?.boxBackgroundColor
-                      }
-                      whiteTextAndBorder={
-                        userdata?.profileDesign?.whiteTextAndBorder
-                      }
-                      removeHash={removeHash}
-                      hideCompanyLogo={userdata?.profileDesign?.hideCompanyLogo}
-                      hideSaveContact={userdata?.profileDesign?.hideSaveContact}
                     />
                   )}
 
                   {userdata?.profileDesign?.backgroundTheme === "Custom" && (
-                    <div className="absolute w-[100%]  ">
+                    <div className="absolute w-[100%] ">
                       <Full
                         coverurl={coverurl}
                         logourl={logourl}
@@ -1032,6 +936,21 @@ const Home = () => {
                         hideSaveContact={
                           userdata?.profileDesign?.hideSaveContact
                         }
+                        // profileDesign={
+                        //   userdata?.profileDesign?.selectedTheme === "other"
+                        //     ? userdata?.profileDesign
+                        //     : customSubDesigns[
+                        //         userdata?.profileDesign?.selectedTheme
+                        //       ]
+                        // }
+                        profileDesign={
+                          // userdata?.profileDesign?.selectedTheme === "other"
+                          //   ?
+                          userdata?.profileDesign
+                          // : cardSubDesigns[
+                          //     userdata?.profileDesign?.selectedTheme
+                          //   ]
+                        }
                       />
                     </div>
                   )}
@@ -1067,6 +986,7 @@ const Home = () => {
                   hideCompanyLogo={false}
                   hideSaveContact={false}
                   isV1={true}
+                  profileDesign={classicSubDesigns["classic1"]}
                 />
               )}
               {/* </div> */}
