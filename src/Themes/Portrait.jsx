@@ -9,6 +9,7 @@ import { LuRepeat } from "react-icons/lu";
 import ExchangeIconBtn from "../assets/components/ExchangeIconBtn";
 
 const Portrait = ({
+  userid,
   coverurl,
   logourl,
   profileurl,
@@ -215,6 +216,7 @@ const Portrait = ({
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 font={userdata?.profileDesign?.profileFont}
+                userid = {userid}
               />
 
               <ExchangeIconBtn

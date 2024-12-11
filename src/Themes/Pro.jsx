@@ -18,6 +18,7 @@ import ExchangeBtn from "../assets/components/ExchangeBtn";
 // import "../Styles/scroll.css";
 
 const Pro = ({
+  userid,
   coverurl,
   logourl,
   profileurl,
@@ -264,6 +265,7 @@ const Pro = ({
                     saveContactTextColor={saveContactTextColor}
                     font={userdata?.profileDesign?.profileFont}
                     isProTheme={true}
+                    userid = {userid}
                   />
                   <ExchangeBtn
                     downloadVcf={handleModal}

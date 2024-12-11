@@ -102,16 +102,18 @@ const SocialLinks = ({
             <h2
               className="text-[18px] font-[700]"
               style={{
-                color: elm?.graphicTextColor ? elm?.graphicTextColor : "black",
+                color: whiteTextAndBorder ? "white" : "black",
               }}
+              // elm?.graphicTextColor ? elm?.graphicTextColor : "black", // this was added before. now icon color removed from app so i removed from here
             >
               {elm?.title}
             </h2>
             <p
               className="font-[400] text-[16px] w-[99%]  mt-[10px]"
               style={{
-                color: elm?.graphicTextColor ? elm?.graphicTextColor : "black",
+                color: whiteTextAndBorder ? "white" : "black",
               }}
+              // elm?.graphicTextColor ? elm?.graphicTextColor : "black",
             >
               {elm?.value}
               {/* This is my text for testing purpose. You can also put your text

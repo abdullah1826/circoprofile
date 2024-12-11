@@ -11,6 +11,7 @@ import { LuRepeat } from "react-icons/lu";
 import ExchangeIconBtn from "../assets/components/ExchangeIconBtn";
 import ExchangeBtn from "../assets/components/ExchangeBtn";
 const ClassicPro = ({
+  userid,
   coverurl,
   logourl,
   profileurl,
@@ -190,6 +191,7 @@ const ClassicPro = ({
                 saveContactTextColor={saveContactTextColor}
                 font={userdata?.profileDesign?.profileFont}
                 isProTheme={true}
+                userid = {userid}
               />
               <ExchangeBtn
                 downloadVcf={handleModal}

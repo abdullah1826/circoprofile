@@ -10,6 +10,7 @@ import { LuRepeat } from "react-icons/lu";
 import ExchangeIconBtn from "../assets/components/ExchangeIconBtn";
 
 const Full = ({
+  userid,
   coverurl,
   logourl,
   profileurl,
@@ -176,6 +177,7 @@ const Full = ({
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 font={userdata?.profileDesign?.profileFont}
+                userid = {userid}
               />
 
               {/* <div

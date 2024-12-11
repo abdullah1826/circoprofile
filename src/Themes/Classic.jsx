@@ -11,6 +11,7 @@ import { LuRepeat } from "react-icons/lu";
 import ExchangeIconBtn from "../assets/components/ExchangeIconBtn";
 import bgPlchldr from "../imgs/bgPlchldr.png";
 const Classic = ({
+  userid,
   coverurl,
   logourl,
   profileurl,
@@ -190,6 +191,7 @@ const Classic = ({
                 saveContactBackgroundColor={saveContactBackgroundColor}
                 saveContactTextColor={saveContactTextColor}
                 font={userdata?.profileDesign?.profileFont}
+                userid = {userid}
               />
               <ExchangeIconBtn
                 handleModal={handleModal}

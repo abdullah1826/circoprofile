@@ -1,4 +1,6 @@
 import React from "react";
+import { ref, query, orderByChild, equalTo, get, update } from "firebase/database";
+import { db, storage } from "../../Firebase";
 
 const SaveBtn = ({
   downloadVcf,
@@ -7,6 +9,7 @@ const SaveBtn = ({
   saveContactTextColor,
   font,
   isProTheme,
+  userid
 }) => {
   console.log(saveContactTextColor);
 
@@ -28,7 +31,38 @@ const SaveBtn = ({
       return rgba2;
     }
   };
+  
 
+  const updateAnalytics = async () => {
+    try {
+      // Create a query to find the user
+      const analyticsQuery = query(
+        ref(db, "Analytic/"),
+        orderByChild("userid"),
+        equalTo(userid)
+      );
+      const snapshot = await get(analyticsQuery);
+      if (snapshot.exists()) {
+        snapshot.forEach((childSnapshot) => {
+          const key = childSnapshot.key; 
+          const analyticsRef = ref(db, `Analytic/${key}`); 
+          // Perform the update
+          update(analyticsRef, {
+            totalLeads: (childSnapshot.val()?.totalLeads || 0) + 1, // Increment totalLeads
+          }).catch((error) => {
+            console.error("Error updating analytics:", error);
+          });
+        });
+      } else {
+        console.warn("No analytics data found for the user.");
+      }
+    } catch (error) {
+      console.error("Error fetching analytics data:", error);
+    }
+  };
+  
+
+ 
   return (
     <div
       className=" flex  items-center justify-center"
@@ -90,7 +124,7 @@ const SaveBtn = ({
                 color: saveContactTextColor,
               }
         }
-        onClick={() => downloadVcf()}
+        onClick={() => {downloadVcf(); updateAnalytics()}}
       >
         Save Contact
       </div>

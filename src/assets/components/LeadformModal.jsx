@@ -102,7 +102,7 @@ const LeadformModal = ({
 
   // Format the date string
   const formattedDate = `${month} ${day},${year}`;
-  console.log(crntUsrAnalytics?.id);
+  // console.log(crntUsrAnalytics?.id);
 
   const addData = async () => {
     if (data.name && data.email && data.phone) {
@@ -119,7 +119,7 @@ const LeadformModal = ({
         update(ref(db, `/Analytic/${crntUsrAnalytics?.id}`), {
           crntMonthLeads: crntUsrAnalytics?.crntMonthLeads + 1,
           crntWeekLeads: crntUsrAnalytics?.crntWeekLeads + 1,
-          totalLeads: crntUsrAnalytics?.totalLeads + 1,
+          // totalLeads: crntUsrAnalytics?.totalLeads + 1,
           todayLeads: crntUsrAnalytics?.todayLeads + 1,
           totalExcanged: isExchangedModeOn ? exchangeInfo + 1 : exchangeInfo,
         }).then(() => {

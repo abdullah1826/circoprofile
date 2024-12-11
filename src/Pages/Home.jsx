@@ -104,7 +104,7 @@ const Home = () => {
     const starCountRef2 = ref(db, `Analytic/`);
     onValue(starCountRef2, async (snapshot) => {
       const analytData = await snapshot.val();
-      console.log(analytData);
+      // console.log(analytData);
       setAllAnalytics(Object.values(analytData));
 
       const starCountRef3 = query(
@@ -125,7 +125,7 @@ const Home = () => {
 
       onValue(starCountRef3, async (snapshot) => {
         const data = await snapshot.val();
-        console.log(data);
+        // console.log(data);
         if (data) {
           setuserdata(Object.values(data)[0]);
 
@@ -136,7 +136,7 @@ const Home = () => {
         } else {
           onValue(starCountRef4, async (snapshot) => {
             const data2 = await snapshot.val();
-            console.log(data2);
+            // console.log(data2);
             if (data2) {
               if (Object.values(data2)[0]?.profileSelected) {
                 var starCountRef7 = query(
@@ -166,7 +166,7 @@ const Home = () => {
             } else {
               onValue(starCountRef5, async (snapshot) => {
                 const data3 = await snapshot.val();
-                console.log(data3);
+                // console.log(data3);
                 if (data3 && Object.values(data3)[0]?.status === true) {
                   const starCountRef6 = query(
                     ref(db, "User/"),
@@ -175,7 +175,7 @@ const Home = () => {
                   );
                   onValue(starCountRef6, async (snapshot) => {
                     const data4 = await snapshot.val();
-                    console.log(data4);
+                    // console.log(data4);
                     if (data4) {
                       if (Object.values(data4)[0]?.profileSelected) {
                         var starCountRef8 = query(
@@ -193,7 +193,7 @@ const Home = () => {
 
                       onValue(starCountRef8, async (snapshot) => {
                         const userdata = await snapshot.val();
-                        console.log(userdata);
+                        // console.log(userdata);
                         if (userdata) {
                           setuserdata(Object.values(userdata)[0]);
                           handleLeadModal(Object.values(userdata)[0]?.leadMode);
@@ -223,7 +223,7 @@ const Home = () => {
       });
     });
   }, []);
-  console.log(userdata);
+  // console.log(userdata);
   let [profileurl, setprofileurl] = useState("");
   useEffect(() => {
     if (userdata?.profileUrl) {
@@ -233,7 +233,7 @@ const Home = () => {
         const fileRef = storagref(storage, userdata?.profileUrl);
         getDownloadURL(fileRef)
           .then((URL) => {
-            console.log(URL);
+            // console.log(URL);
             setprofileurl(URL);
           })
           .catch((error) => {
@@ -302,7 +302,7 @@ const Home = () => {
     return addedOrNot;
   };
 
-  console.log(crntUsrAnalytics);
+  // console.log(crntUsrAnalytics);
 
   useEffect(() => {
     if (userdata?.id) {
@@ -705,7 +705,7 @@ const Home = () => {
     }
   };
 
-  console.log(classicSubDesigns["classic1"], "<----------------here is design");
+  // console.log(classicSubDesigns["classic1"], "<----------------here is design");
 
   return (
     <>
@@ -785,6 +785,7 @@ const Home = () => {
                 <>
                   {userdata?.profileDesign?.backgroundTheme === "Classic" && (
                     <Classic
+                      userid = {userdata?.id}
                       coverurl={coverurl}
                       logourl={logourl}
                       profileurl={profileurl}
@@ -813,6 +814,7 @@ const Home = () => {
                   {userdata?.profileDesign?.backgroundTheme === "Color" && (
                     <Color
                       Portrait
+                      userid = {userdata?.id}
                       coverurl={coverurl}
                       logourl={logourl}
                       profileurl={profileurl}
@@ -840,6 +842,7 @@ const Home = () => {
                   {userdata?.profileDesign?.backgroundTheme === "Portrait" && (
                     <Portrait
                       Portrait
+                      userid = {userdata?.id}
                       coverurl={coverurl}
                       logourl={logourl}
                       profileurl={profileurl}
@@ -866,6 +869,7 @@ const Home = () => {
                   {userdata?.profileDesign?.backgroundTheme === "Card" && (
                     <Pro
                       Portrait
+                      userid = {userdata?.id}
                       coverurl={coverurl}
                       logourl={logourl}
                       profileurl={profileurl}
@@ -892,6 +896,7 @@ const Home = () => {
                   {userdata?.profileDesign?.backgroundTheme === "Custom" && (
                     <div className="absolute w-[100%] ">
                       <Full
+                        userid = {userdata?.id}
                         coverurl={coverurl}
                         logourl={logourl}
                         profileurl={profileurl}
@@ -957,6 +962,7 @@ const Home = () => {
                 </>
               ) : (
                 <Classic
+                  userid = {userdata?.id}
                   coverurl={coverurl}
                   logourl={logourl}
                   profileurl={profileurl}
