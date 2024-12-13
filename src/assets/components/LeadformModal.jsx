@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import { db, storage } from "../../Firebase";
 import { RxCross1 } from "react-icons/rx";
 import "../../App.css";
+import axios from "axios";
 
 const LeadformModal = ({
   modal,
@@ -104,6 +105,25 @@ const LeadformModal = ({
   const formattedDate = `${month} ${day},${year}`;
   // console.log(crntUsrAnalytics?.id);
 
+  
+  const sendNotification = async (profileId, contactId, name) => {
+
+
+    axios.post(`https://api.yotap.me/api/send-notification`, {
+              profileId: profileId,
+              contactId: contactId,
+              name: name,
+              action: "contact"
+            })
+            .then((res) => {
+              console.log("the response", res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+
+
+  }
   const addData = async () => {
     if (data.name && data.email && data.phone) {
       let pushKey = push(ref(db, `Contacts/`), {
@@ -125,6 +145,7 @@ const LeadformModal = ({
         }).then(() => {
           setModal(true);
           setIsMessage(true);
+          sendNotification(userdata?.id, pushKey, data.name);
         });
 
         // toast.success("Information submited successfuly");
