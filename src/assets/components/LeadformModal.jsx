@@ -30,7 +30,7 @@ const LeadformModal = ({
     bottom: 1,
     maxWidth: window.innerWidth > 850 ? 420 : 430,
     width: "100%",
-    height: 500,
+    height: 565,
     display: "flex",
     justifyContent: "center",
     zIndex: 30,
@@ -58,6 +58,7 @@ const LeadformModal = ({
     phone: "",
     job: "",
     company: "",
+    website: "",
   });
 
   let [img, setimg] = useState("");
@@ -155,6 +156,7 @@ const LeadformModal = ({
           phone: "",
           job: "",
           company: "",
+          website: "",
         });
       });
     } else {
@@ -290,6 +292,17 @@ const LeadformModal = ({
                         setData({ ...data, email: e.target.value })
                       }
                       value={data.email}
+                    />
+                  </div>
+                  <div class="mt-4">
+                    <input
+                      type="text"
+                      placeholder="Website"
+                      class="outline-none p-2 w-[100%]  border rounded-[16px] h-[52px] mt-[2px]"
+                      onChange={(e) =>
+                        setData({ ...data, website: e.target.value })
+                      }
+                      value={data.website}
                     />
                   </div>
 
