@@ -110,7 +110,7 @@ const LeadformModal = ({
   const sendNotification = async (profileId, contactId, name) => {
 
 
-    axios.post(`https://api.yotap.me/api/send-notification`, {
+    axios.post(`https://wallet.circo.me/api/send-notification`, {
               profileId: profileId,
               contactId: contactId,
               name: name,
