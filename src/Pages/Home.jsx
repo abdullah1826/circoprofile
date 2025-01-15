@@ -87,19 +87,6 @@ const Home = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const starCountRef3 = query(
-  //     ref(db, "User/"),
-  //     orderByChild("name"),
-  //     equalTo("George William")
-  //   );
-
-  //   onValue(starCountRef3, async (snapshot) => {
-  //     const data = await snapshot.val();
-  //     console.log("user TARGET", data);
-  //   });
-  // }, []);
-
   useEffect(() => {
     const starCountRef2 = ref(db, `Analytic/`);
     onValue(starCountRef2, async (snapshot) => {
@@ -785,7 +772,7 @@ const Home = () => {
                 <>
                   {userdata?.profileDesign?.backgroundTheme === "Classic" && (
                     <Classic
-                      userid = {userdata?.id}
+                      userid={userdata?.id}
                       coverurl={coverurl}
                       logourl={logourl}
                       profileurl={profileurl}
@@ -800,21 +787,14 @@ const Home = () => {
                       scrnWidth={scrnWidth}
                       removeHash={removeHash}
                       isV1={false}
-                      profileDesign={
-                        // userdata?.profileDesign?.selectedTheme === "other"
-                        //   ?
-                        userdata?.profileDesign
-                        // : classicSubDesigns[
-                        //     userdata?.profileDesign?.selectedTheme
-                        //   ]
-                      }
+                      profileDesign={userdata?.profileDesign}
                     />
                   )}
 
                   {userdata?.profileDesign?.backgroundTheme === "Color" && (
                     <Color
                       Portrait
-                      userid = {userdata?.id}
+                      userid={userdata?.id}
                       coverurl={coverurl}
                       logourl={logourl}
                       profileurl={profileurl}
@@ -828,21 +808,14 @@ const Home = () => {
                       linkAnalytics={linkAnalytics}
                       scrnWidth={scrnWidth}
                       removeHash={removeHash}
-                      profileDesign={
-                        // userdata?.profileDesign?.selectedTheme === "other"
-                        //   ?
-                        userdata?.profileDesign
-                        // : colorSubDesigns[
-                        //     userdata?.profileDesign?.selectedTheme
-                        //   ]
-                      }
+                      profileDesign={userdata?.profileDesign}
                     />
                   )}
 
                   {userdata?.profileDesign?.backgroundTheme === "Portrait" && (
                     <Portrait
                       Portrait
-                      userid = {userdata?.id}
+                      userid={userdata?.id}
                       coverurl={coverurl}
                       logourl={logourl}
                       profileurl={profileurl}
@@ -855,21 +828,14 @@ const Home = () => {
                       checkHttp={checkHttp}
                       linkAnalytics={linkAnalytics}
                       scrnWidth={scrnWidth}
-                      profileDesign={
-                        // userdata?.profileDesign?.selectedTheme === "other"
-                        //   ?
-                        userdata?.profileDesign
-                        // : portraitSubDesigns[
-                        //     userdata?.profileDesign?.selectedTheme
-                        //   ]
-                      }
+                      profileDesign={userdata?.profileDesign}
                     />
                   )}
 
                   {userdata?.profileDesign?.backgroundTheme === "Card" && (
                     <Pro
                       Portrait
-                      userid = {userdata?.id}
+                      userid={userdata?.id}
                       coverurl={coverurl}
                       logourl={logourl}
                       profileurl={profileurl}
@@ -882,21 +848,14 @@ const Home = () => {
                       checkHttp={checkHttp}
                       linkAnalytics={linkAnalytics}
                       scrnWidth={scrnWidth}
-                      profileDesign={
-                        // userdata?.profileDesign?.selectedTheme === "other"
-                        //   ?
-                        userdata?.profileDesign
-                        // : cardSubDesigns[
-                        //     userdata?.profileDesign?.selectedTheme
-                        //   ]
-                      }
+                      profileDesign={userdata?.profileDesign}
                     />
                   )}
 
                   {userdata?.profileDesign?.backgroundTheme === "Custom" && (
                     <div className="absolute w-[100%] ">
                       <Full
-                        userid = {userdata?.id}
+                        userid={userdata?.id}
                         coverurl={coverurl}
                         logourl={logourl}
                         profileurl={profileurl}
@@ -941,28 +900,14 @@ const Home = () => {
                         hideSaveContact={
                           userdata?.profileDesign?.hideSaveContact
                         }
-                        // profileDesign={
-                        //   userdata?.profileDesign?.selectedTheme === "other"
-                        //     ? userdata?.profileDesign
-                        //     : customSubDesigns[
-                        //         userdata?.profileDesign?.selectedTheme
-                        //       ]
-                        // }
-                        profileDesign={
-                          // userdata?.profileDesign?.selectedTheme === "other"
-                          //   ?
-                          userdata?.profileDesign
-                          // : cardSubDesigns[
-                          //     userdata?.profileDesign?.selectedTheme
-                          //   ]
-                        }
+                        profileDesign={userdata?.profileDesign}
                       />
                     </div>
                   )}
                 </>
               ) : (
                 <Classic
-                  userid = {userdata?.id}
+                  userid={userdata?.id}
                   coverurl={coverurl}
                   logourl={logourl}
                   profileurl={profileurl}
