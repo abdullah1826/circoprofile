@@ -1,12 +1,10 @@
-import { Box, Modal } from "@mui/material";
+import { Box } from "@mui/material";
 import Slide from "@mui/material/Slide";
-import React, { useEffect, useState } from "react";
-import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+import React, { useState } from "react";
 import { push, ref, serverTimestamp, update } from "firebase/database";
-import { getDownloadURL, uploadBytes, ref as sRef } from "firebase/storage";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-import { db, storage } from "../../Firebase";
+import { db } from "../../Firebase";
 import { RxCross1 } from "react-icons/rx";
 import "../../App.css";
 import axios from "axios";
@@ -23,10 +21,7 @@ const LeadformModal = ({
   let screenWidth = screen.width;
   const style2 = {
     position: "absolute",
-    // top: "57%",
-    // left: "70%",
     right: "0%",
-    // transform: "translate(-50%, -50%)",
     bottom: 1,
     maxWidth: window.innerWidth > 850 ? 420 : 430,
     width: "100%",
@@ -34,14 +29,7 @@ const LeadformModal = ({
     display: "flex",
     justifyContent: "center",
     zIndex: 30,
-
-    // marginRight: screenWidth >= 900 ? "20px" : "0px",
-
-    // boxShadow: 24,
-
     outline: "none",
-    // borderRadiusTop: "18px",
-    // p: "32px",
   };
 
   let [showExtra, setshowExtra] = useState(false);
@@ -97,41 +85,27 @@ const LeadformModal = ({
     return number < 10 ? "0" + number : number;
   }
 
-  // Extract day, month, and year
-  const day = addLeadingZero(currentDate.getDate());
-  const month = getMonthAbbreviation(currentDate);
-  const year = currentDate.getFullYear();
-
-  // Format the date string
-  const formattedDate = `${month} ${day},${year}`;
-  // console.log(crntUsrAnalytics?.id);
-
-  
   const sendNotification = async (profileId, contactId, name) => {
-
-
-    axios.post(`https://wallet.circo.me/api/send-notification`, {
-              profileId: profileId,
-              contactId: contactId,
-              name: name,
-              action: "contact"
-            })
-            .then((res) => {
-              console.log("the response", res);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-
-
-  }
+    axios
+      .post(`https://wallet.circo.me/api/send-notification`, {
+        profileId: profileId,
+        contactId: contactId,
+        name: name,
+        action: "contact",
+      })
+      .then((res) => {
+        console.log("the response", res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const addData = async () => {
     if (data.name && data.email && data.phone) {
       let pushKey = push(ref(db, `Contacts/`), {
         ...data,
         userid: userdata?.id,
         date: serverTimestamp(),
-        // date: formattedDate,
       }).key;
       update(ref(db, `Contacts/${pushKey}`), {
         id: pushKey,
@@ -166,17 +140,8 @@ const LeadformModal = ({
 
   let [isMessage, setIsMessage] = useState(false);
 
-
-
   return (
     <div>
-      {/* <Modal
-        open={modal}
-        onClose={() => handleModal()}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >*/}
-
       <Slide
         in={modal}
         direction="up"
@@ -229,16 +194,6 @@ const LeadformModal = ({
 
                 <div class="w-[90%]  mt-[0px] ">
                   <div class="mt-4">
-                    {/* <p
-                  class="ml-2 text-[#3F3939]"
-                  style={{
-                    fontFamily: "Inter",
-                    fontWeight: "300",
-                    fontSize: "16px",
-                  }}
-                >
-                  Full Name<span className="text-[red]">*</span>
-                </p> */}
                     <input
                       type="text"
                       placeholder="*Your Name"
@@ -251,16 +206,6 @@ const LeadformModal = ({
                   </div>
 
                   <div class="mt-4">
-                    {/* <p
-                  class="ml-2 text-[#3F3939]"
-                  style={{
-                    fontFamily: "Inter",
-                    fontWeight: "300",
-                    fontSize: "16px",
-                  }}
-                >
-                  Phone Number<span className="text-[red]">*</span>
-                </p> */}
                     <input
                       type="text"
                       placeholder="*Phone"
@@ -273,17 +218,6 @@ const LeadformModal = ({
                   </div>
 
                   <div class="mt-4">
-                    {/* <p
-                  class="ml-2 text-[#3F3939]"
-                  style={{
-                    fontFamily: "Inter",
-                    fontWeight: "300",
-                    fontSize: "16px",
-                  }}
-                >
-                  Email<span className="text-[red]">*</span>
-                </p> */}
-
                     <input
                       type="text"
                       placeholder="*Email"
@@ -309,16 +243,6 @@ const LeadformModal = ({
                   <div>
                     <div class="mt-4 w-[100%] flex justify-between">
                       <div className="w-[47%] ">
-                        {/* <p
-                      class="ml-2 text-[#3F3939]"
-                      style={{
-                        fontFamily: "Inter",
-                        fontWeight: "300",
-                        fontSize: "16px",
-                      }}
-                    >
-                      Company
-                    </p> */}
                         <input
                           type="text"
                           placeholder="Company"
@@ -330,16 +254,6 @@ const LeadformModal = ({
                         />
                       </div>
                       <div className="w-[47%] ">
-                        {/* <p
-                      class="ml-2 text-[#3F3939]"
-                      style={{
-                        fontFamily: "Inter",
-                        fontWeight: "300",
-                        fontSize: "16px",
-                      }}
-                    >g
-                      Title
-                    </p> */}
                         <input
                           type="text"
                           placeholder="Job title"
@@ -351,19 +265,6 @@ const LeadformModal = ({
                         />
                       </div>
                     </div>
-
-                    {/* <div class="mt-2">
-                  <p class="ml-2">Company</p>
-                  <input
-                    type="text"
-                    placeholder="Enter Company"
-                    class="outline-none p-2 w-[100%]  border rounded-lg h-[57px] mt-[2px]"
-                    onChange={(e) =>
-                      setData({ ...data, company: e.target.value })
-                    }
-                    value={data.company}
-                  />
-                </div> */}
                   </div>
 
                   <div className="w-[100%] flex justify-center mt-[20px]">
@@ -371,7 +272,6 @@ const LeadformModal = ({
                       className={`w-[100%] border rounded-[18px]  h-[60px] bg-[#2B6EF6] flex justify-center items-center text-white cursor-pointer `}
                       onClick={() => addData()}
                       style={{
-                        // fontFamily: "Inter",
                         fontSize: "20px",
                         fontWeight: "400",
                       }}
@@ -398,7 +298,6 @@ const LeadformModal = ({
                       className="w-[90%] border rounded-[18px]  h-[60px] bg-[#2B6EF6] flex justify-center items-center text-white cursor-pointer "
                       onClick={() => window.open("https://onelink.to/srbhaw")}
                       style={{
-                        // fontFamily: "Inter",
                         fontSize: "20px",
                         fontWeight: "400",
                       }}
@@ -426,104 +325,3 @@ const LeadformModal = ({
 };
 
 export default LeadformModal;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
