@@ -42,7 +42,7 @@ const FeaturedSocial = ({
       <a
         target="_blank"
         href={checkHttp(
-          elm?.baseUrl + (elm?.value ? elm?.value : elm?.url),
+          elm?.baseUrl || "" + (elm?.value ? elm?.value : elm?.url),
           elm?.linkID,
           elm?.value
         )}
@@ -106,7 +106,7 @@ const FeaturedSocial = ({
                   style={{ backgroundColor: appIconColor }}
                 >
                   {elm?.linkID != null &&
-                    (!appIconColor || elm?.linkID === 999 ? (
+                    (!appIconColor || elm?.linkImgUrl ? (
                       <img
                         src={
                           returnPngIcons(elm?.linkID)

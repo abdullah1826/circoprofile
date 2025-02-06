@@ -196,7 +196,7 @@ const SocialLinks = ({
                   }}
                 >
                   {elm?.linkID != null &&
-                    (!appIconColor || elm?.linkID === 999 ? (
+                    (!appIconColor || elm?.linkImgUrl ? (
                       <img
                         src={
                           returnPngIcons(elm?.linkID)

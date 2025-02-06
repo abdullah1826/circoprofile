@@ -101,6 +101,8 @@ const LeadformModal = ({
       });
   };
   const addData = async () => {
+    console.log(crntUsrAnalytics?.id, "here is analytics id");
+
     if (data.name && data.email && data.phone) {
       let pushKey = push(ref(db, `Contacts/`), {
         ...data,
@@ -114,9 +116,9 @@ const LeadformModal = ({
         update(ref(db, `/Analytic/${crntUsrAnalytics?.id}`), {
           crntMonthLeads: crntUsrAnalytics?.crntMonthLeads + 1,
           crntWeekLeads: crntUsrAnalytics?.crntWeekLeads + 1,
-          // totalLeads: crntUsrAnalytics?.totalLeads + 1,
+          totalLeads: crntUsrAnalytics?.totalLeads + 1,
           todayLeads: crntUsrAnalytics?.todayLeads + 1,
-          totalExcanged: isExchangedModeOn ? exchangeInfo + 1 : exchangeInfo,
+          totalExcanged: exchangeInfo + 1,
         }).then(() => {
           setModal(true);
           setIsMessage(true);

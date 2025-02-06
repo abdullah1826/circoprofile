@@ -44,7 +44,7 @@ import paypal from "./whiteIcons/paypal.svg";
 
 // import payment icons
 
-// import website from "./whiteIcons/link.png";
+import website from "./whiteIcons/web.png";
 import venmo from "./whiteIcons/venmo.svg";
 import calendly from "./whiteIcons/calendly.svg";
 import reviews from "./whiteIcons/review.svg";
@@ -331,6 +331,7 @@ export let returnWhiteIcons = (id, appcolor, size = 20) => {
     48: thread,
     49: openSea,
     50: zelle,
+    999: website,
   };
 
   const iconSrc = iconsMap[id];
