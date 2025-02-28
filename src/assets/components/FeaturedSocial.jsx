@@ -16,7 +16,7 @@ const FeaturedSocial = ({
   i,
   sociallink,
 }) => {
-  console.log(highlightBoxStyle);
+  // console.log(highlightBoxStyle);
 
   let hexToRGBA = (hex, num) => {
     // Remove the '#' character if present

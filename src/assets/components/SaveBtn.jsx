@@ -11,7 +11,7 @@ const SaveBtn = ({
   isProTheme,
   userid
 }) => {
-  console.log(saveContactTextColor);
+  // console.log(saveContactTextColor);
 
   let hexToRGBA = (hex, num) => {
     // Remove the '#' character if present

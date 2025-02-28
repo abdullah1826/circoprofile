@@ -24,12 +24,12 @@ const SocialLinks = ({
   boxTextColor,
   whiteTextAndBorder,
 }) => {
-  console.log(appIconColor);
+  // console.log(appIconColor);
 
   let imgAdded = (name) => {
     if (typeof name === "string") {
       if (name?.slice(0, 4) === "http") {
-        console.log(true);
+        // console.log(true);
         return true;
       } else {
         return false;
@@ -60,6 +60,7 @@ const SocialLinks = ({
             webBtnStyle={webBtnStyle}
             weblinkButtonTextColor={weblinkButtonTextColor}
             weblinkButtonBackgroundColor={weblinkButtonBackgroundColor}
+            appIconColor={appIconColor}
             placeholderImg={web}
           />
         ) : elm?.linkID === 999 && elm?.style === "style3" ? (
@@ -191,7 +192,7 @@ const SocialLinks = ({
                     backgroundColor:
                       elm?.linkID === 999 ||
                       !returnWhiteIcons(elm?.linkID, appIconColor)
-                        ? "transparent"
+                        ? appIconColor
                         : appIconColor,
                   }}
                 >

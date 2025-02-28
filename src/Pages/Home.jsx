@@ -241,7 +241,7 @@ const Home = () => {
 
       getDownloadURL(fileRef)
         .then((URL) => {
-          console.log(URL);
+          // console.log(URL);
           setlogourl(URL);
         })
         .catch((error) => {
@@ -670,7 +670,7 @@ const Home = () => {
       return code;
     }
   };
-  console.log(userdata?.profileDesign?.selectedTheme);
+  // console.log(userdata?.profileDesign?.selectedTheme);
 
   const returnBgImage = () => {
     if (userdata?.profileDesign?.selectedTheme === "other") {

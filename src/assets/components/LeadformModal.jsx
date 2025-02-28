@@ -38,7 +38,7 @@ const LeadformModal = ({
     setshowExtra(!showExtra);
   };
 
-  console.log(window.innerHeight);
+  // console.log(window.innerHeight);
 
   let [data, setData] = useState({
     name: "",
@@ -78,7 +78,7 @@ const LeadformModal = ({
     ];
     return monthNames[date.getMonth()];
   }
-  console.log(isExchangedModeOn);
+  // console.log(isExchangedModeOn);
 
   // Function to add leading zero to single-digit day
   function addLeadingZero(number) {
