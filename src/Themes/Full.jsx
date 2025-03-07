@@ -93,7 +93,7 @@ const Full = ({
               <img
                 src={profileurl}
                 alt="profile"
-                className="h-[150px] w-[150px] rounded-full border-[3px] border-white"
+                className="h-[150px] w-[150px] rounded-full border-[3px] border-white object-cover"
                 loading="lazy"
               />
             ) : (

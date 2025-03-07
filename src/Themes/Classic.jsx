@@ -83,7 +83,7 @@ const Classic = ({
         {/* {coverurl ? ( */}
         <img
           src={coverurl || bgPlchldr}
-          className="h-[210px] w-[100%]  "
+          className="h-[210px] w-[100%]"
           loading="lazy"
         />
         {/* // ) : (
@@ -96,7 +96,7 @@ const Classic = ({
               <img
                 src={logourl}
                 alt=""
-                className="absolute bottom-[15px] right-[-7px] h-[55px] w-[55px] rounded-full border-[1px] border-white"
+                className="absolute bottom-[15px] right-[-7px] h-[55px] w-[55px] rounded-full border-[1px] border-white object-cover"
                 loading="lazy"
               />
             )}
@@ -104,7 +104,7 @@ const Classic = ({
               <img
                 src={profileurl}
                 alt=""
-                className="h-[150px] w-[150px] rounded-full border-[3px] border-white"
+                className="h-[150px] w-[150px] rounded-full border-[3px] border-white object-cover"
                 loading="lazy"
               />
             ) : (
